@@ -10,7 +10,7 @@ pipeline {
   stages {
     stage('Building image') {
         steps{
-            sh "cp django.env.example django.env"
+//            sh "cp django.env.example django.env"
             sh 'cat ${NGINX_REPO_CERT} > "nginx/nginx-repo.crt"'
             sh 'cat ${NGINX_REPO_KEY} > "nginx/nginx-repo.key"'
             sh 'docker-compose build'
