@@ -5,7 +5,7 @@ services:
     build: app
     image: akhng999/django-gunicorn-Vn
 #    container_name: django-gunicorn
-    restart: always
+#    restart: always
     expose:
       - "8000"
     command:
