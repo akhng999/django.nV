@@ -1,0 +1,23 @@
+version: "3.7"
+
+services:
+  app:
+    build: app
+    image: akhng999/django-gunicorn-Vn
+#    container_name: django-gunicorn
+    restart: always
+    expose:
+      - "8000"
+    command:
+      "gunicorn --workers=2 --bind=0.0.0.0:8000 taskManager.wsgi:application"
+
+  nginx:
+    build: nginx
+    image: akhng999/nginx:nginxplus
+    container_name: nginxplus
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx:/etc/nginx/conf.d
+    depends_on:
+      - app
