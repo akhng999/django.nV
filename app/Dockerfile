@@ -16,6 +16,4 @@ ADD . ${APP_ROOT}
 COPY reset_db.sh runapp.sh /root/
 
 CMD ["sh", "chmod +x /root/reset_db.sh"]
-CMD ["sh", "chmod +x /root/reset_db.sh"]
 CMD ["sh", "/root/reset_db.sh"]
-CMD ["sh", "/root/runapp.sh"]
