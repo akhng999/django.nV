@@ -3,7 +3,7 @@ version: "3.7"
 services:
   app:
     build: app
-    image: akhng999/django-gunicorn-Vn
+    image: akhng999/django.vn-gunicorn
 #    container_name: django-gunicorn
 #    restart: always
     expose:
