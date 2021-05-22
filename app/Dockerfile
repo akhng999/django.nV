@@ -1,6 +1,7 @@
 FROM python:3.8.3
 
 ENV APP_ROOT /src
+ENV STATIC_ROOT /static
 ENV CONFIG_ROOT /config
 
 
@@ -13,6 +14,8 @@ WORKDIR ${APP_ROOT}
 
 ADD . ${APP_ROOT}
 
+RUN ln -sf ${APP_ROOT}/taskManager/static/ /static
+RUN ln -sf ${APP_ROOT}/taskManager /taskManager
 COPY reset_db.sh runapp.sh /root/
 RUN chmod +x reset_db.sh
 RUN ./reset_db.sh
