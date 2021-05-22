@@ -1,6 +1,6 @@
 FROM python:3.8.3
 
-ENV APP_ROOT /src
+ENV APP_ROOT /
 ENV CONFIG_ROOT /config
 
 
