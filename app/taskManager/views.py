@@ -224,7 +224,7 @@ def download_profile_pic(request, user_id):
     if len(filepath) > 1:
         return redirect(filepath)
     else:
-        return redirect('/static/taskManager/uploads/default.png')
+        return redirect('static/taskManager/uploads/default.png')
     #filename = user.get_full_name()+"."+filepath.split(".")[-1]
     # try:
     #	abspath = open(filepath, 'rb')
