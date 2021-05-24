@@ -17,7 +17,7 @@ services:
     container_name: ngx_appprotect
     ports:
       - "80:80"
-    volumes:
-      - ./nginx:/etc/nginx/conf.d
+#    volumes:
+#      - ./nginx:/etc/nginx/conf.d
     depends_on:
       - app
