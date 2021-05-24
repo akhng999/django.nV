@@ -13,8 +13,10 @@ WORKDIR ${APP_ROOT}
 
 ADD . ${APP_ROOT}
 
-RUN ln -sf ${APP_ROOT}/taskManager/static/ /static
-RUN ln -sf ${APP_ROOT}/taskManager /taskManager
+#RUN ln -sf ${APP_ROOT}/taskManager/static/ /static
+#RUN ln -sf ${APP_ROOT}/taskManager /taskManager
+
+RUN chmod +rx ${APP_ROOT}/static
 COPY reset_db.sh runapp.sh /root/
 RUN chmod +x reset_db.sh
 RUN ./reset_db.sh
