@@ -12,7 +12,7 @@ pipeline {
             sh 'cat ${NGINX_REPO_KEY} > "nginx/nginx-repo.key"'
             sh 'docker-compose build'
         }
-    } */
+    } 
     stage('Pushing Image') {
         steps {
             echo "pushing to docker hub registry"
@@ -21,10 +21,10 @@ pipeline {
                     sh 'docker-compose push'
                 }
             }
-       }
+        }
     } 
     stage('Deploy the Applications') {
-        steps{
+        steps {
             sh 'docker-compose up -d'
         }
     }
