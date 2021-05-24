@@ -17,9 +17,8 @@ pipeline {
     stage('Pushing Image') {
         steps {
             echo "pushing to docker hub registry"
-            docker.withRegistry( '', registryCredential ) {
-                dockerImage.push("akhng999/django-gunicorn-vn:latest")
-                dockerImage.push('akhng999/nginx:nginxplus')
+            withDockerRegistry([ credentialsId: "registryCredential", url: "" ]) {
+                sh 'docker-compose push'
             }
        }
     } 
