@@ -1,10 +1,12 @@
 {
     "policy" : {
-       "name" : "app_protect_strict_policy",
+       "name" : "custom_app_protect_strict_policy",
        "description" : "NGINX App Protect Strict Policy",
        "template": {
          "name": "POLICY_TEMPLATE_NGINX_BASE"
        },
+       "applicationLanguage": "utf-8",
+       "enforcementMode": "blocking",
        "blocking-settings" : {
           "evasions" : [
              {
@@ -170,12 +172,35 @@
                "name": "VIOL_CSRF",
                "alarm": true,
                "block": true
-            }
+             },
+             {
+               "name": "VIOL_THREAT_CAMPAIGN",
+               "alarm": true,
+               "block": true
+             }
           ]
        },
        "csrf-protection": {
          "enabled": true
-       },     
+       },
+       "csrf-urls": [
+         {
+             "$action": "delete",
+             "method": "POST",
+             "url": "*"
+         },
+         {
+             "enforcementAction": "verify-origin",
+             "method": "POST",
+             "url": "/taskManager/forgot_passowrd"
+         }
+       ],
+       "host-names": [
+         {
+             "name": "taskManager.com",
+             "includeSubdomains": false
+         }
+       ],
        "cookies" : [
           {
              "name" : "*",
@@ -206,6 +231,11 @@
           }
        ],
        "signature-sets" : [
+         {
+             "name": "High Accuracy Signatures",
+             "block": true,
+             "alarm": true
+          },
           {
              "alarm" : true,
              "block" : false,
@@ -241,7 +271,21 @@
              "disallowFileUploadOfExecutables" : true,
              "clickjackingProtection": true,
              "allowRenderingInFrames": "never"
-          }
+          },
+          {
+            "name": "/taskManager/forgot_password",
+            "html5CrossOriginRequestsEnforcement": {
+                "enforcementMode": "enforce",
+                "crossDomainAllowedOrigin": [
+                    {
+                        "includeSubDomains": false,
+                        "originName": "taskManager.com",
+                        "originPort": "all",
+                        "originProtocol": "http/https"
+                    }
+                ]
+            }
+        }
        ],
        "xml-profiles" : [
           {
@@ -269,17 +313,25 @@
        "bot-defense": {
          "mitigations": {
              "classes": [
-                 {
-                     "name": "untrusted-bot",
-                     "action": "alarm"
-                 }
+                {
+                   "name": "trusted-bot",
+                   "action": "alarm"
+                },
+                {
+                   "name": "untrusted-bot",
+                   "action": "block"
+               },
+               {
+                   "name": "malicious-bot",
+                   "action": "block"
+               }
              ]
          }
        },
        "enforcer-settings": {
          "enforcerStateCookies": {
              "httpOnlyAttribute": true,
-             "secureAttribute": "always",
+             "secureAttribute": "never",
              "sameSiteAttribute": "strict"
          }
       }
