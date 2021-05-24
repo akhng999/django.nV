@@ -17,7 +17,7 @@ pipeline {
     stage('Pushing Image') {
         steps {
             echo "pushing to docker hub registry"
-            withDockerRegistry([ credentialsId: "registryCredential", url: "" ]) {
+            withDockerRegistry([ credentialsId: '${registryCredential}', url: "" ]) {
                 sh 'docker-compose push'
             }
        }
