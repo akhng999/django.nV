@@ -13,8 +13,8 @@ services:
 
   nginx:
     build: nginx
-    image: akhng999/nginx:nginxplus
-    container_name: nginxplus
+    image: akhng999/nginx:ngx_appprotect
+    container_name: ngx_appprotect
     ports:
       - "80:80"
     volumes:
