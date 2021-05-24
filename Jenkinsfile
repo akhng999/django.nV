@@ -19,8 +19,8 @@ pipeline {
             echo "pushing to docker hub registry"
             script {
                 docker.withRegistry('', 'registryCredential') {
-                    docker-compose push
-                })
+                    sh 'docker-compose push'
+                }
             }
        }
     } 
