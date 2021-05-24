@@ -19,6 +19,6 @@ services:
       - "80:80"
     volumes:
     #  - ./nginx/:/etc/nginx/conf.d
-      - ./nginx/app_protect/:/etc/app_protect/conf
+      - ./nginx/app_protect/:/etc/app_protect/conf/myconf
     depends_on:
       - app
