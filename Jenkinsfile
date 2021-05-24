@@ -13,7 +13,18 @@ pipeline {
             sh 'docker-compose build'
         }
     } 
+    stage('Dockerhub Approval Request') {
+        steps {
+            script {
+                env.PUSH_TO_DOCKER_HUB = input message: 'User input required', 
+                parameters: [choice(name: 'Push to Docker Hub', choices: 'no\nyes', description: 'Choose "yes" if you want to push this build')]
+            }
+        }
+    }  
     stage('Pushing Image') {
+        when {
+            environment name: 'PUSH_TO_DOCKER_HUB', value: 'yes'
+        }
         steps {
             echo "pushing to docker hub registry"
             script {
