@@ -18,7 +18,7 @@ pipeline {
         steps {
             echo "pushing to docker hub registry"
             script {
-                docker.withRegistry('', 'registryCredential') {
+                docker.withRegistry('', registryCredential) {
                     sh 'docker-compose push'
                 }
             }
