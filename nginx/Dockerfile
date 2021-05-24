@@ -34,7 +34,8 @@ RUN wget https://cs.nginx.com/static/keys/app-protect-security-updates.key \
 RUN wget -P /etc/apt/apt.conf.d https://cs.nginx.com/static/files/90app-protect-security-updates
 
 # Update attack signatures:
-RUN apt-get install app-protect-attack-signatures
+RUN apt-get update \
+    && apt-get install app-protect-attack-signatures
 
 # Update Threat campaigns:
 RUN apt-get install app-protect-threat-campaigns
