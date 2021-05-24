@@ -43,7 +43,7 @@ pipeline {
         steps {
             echo "Waiting app to get ready!!"
             sleep(10)
-            sh "docker run -t owasp/zap2docker-stable zap-baseline.py -t http://192.168.255.203/taskManager -a -j -r testreport.html || true"
+            sh "docker run -t owasp/zap2docker-stable zap-baseline.py -t http://192.168.255.203/taskManager -a -j || true"
 		}
   	} 
   } 
