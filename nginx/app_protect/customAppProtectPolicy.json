@@ -165,9 +165,17 @@
                 "block" : true,
                 "description" : "Illegal gRPC method",
                 "name" : "VIOL_GRPC_METHOD"
-             }
+             },
+             {
+               "name": "VIOL_CSRF",
+               "alarm": true,
+               "block": true
+            }
           ]
        },
+       "csrf-protection": {
+         "enabled": true
+       },     
        "cookies" : [
           {
              "name" : "*",
@@ -210,7 +218,7 @@
           },
           {
              "alarm" : true,
-             "block" : false,
+             "block" : true,
              "name" : "Information Leakage Signatures"
           },
           {
@@ -230,7 +238,9 @@
              "type" : "wildcard",
              "method" : "*",
              "isAllowed" : true,
-             "disallowFileUploadOfExecutables" : true
+             "disallowFileUploadOfExecutables" : true,
+             "clickjackingProtection": true,
+             "allowRenderingInFrames": "never"
           }
        ],
        "xml-profiles" : [
@@ -265,6 +275,13 @@
                  }
              ]
          }
-       }
+       },
+       "enforcer-settings": {
+         "enforcerStateCookies": {
+             "httpOnlyAttribute": true,
+             "secureAttribute": "always",
+             "sameSiteAttribute": "strict"
+         }
+      },
     }
  }
