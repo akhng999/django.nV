@@ -282,6 +282,6 @@
              "secureAttribute": "always",
              "sameSiteAttribute": "strict"
          }
-      },
+      }
     }
  }
