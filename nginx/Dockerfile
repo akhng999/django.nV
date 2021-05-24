@@ -68,8 +68,6 @@ RUN set -x \
 RUN ln -sf /dev/stdout /var/log/nginx/access.log \
     && ln -sf /dev/stderr /var/log/nginx/error.log
 
-COPY ../app/taskManager/static /var/www/static
-
 EXPOSE 80
 
 STOPSIGNAL SIGTERM
