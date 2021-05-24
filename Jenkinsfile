@@ -1,8 +1,8 @@
 pipeline {
   environment {
-    registryCredential = 'DOCKER_HUB_TOKEN'
-    NGINX_REPO_CERT = credentials("NGINX_REPO_EVAL_CERT")
-    NGINX_REPO_KEY = credentials("NGINX_REPO_EVAL_KEY")
+      registryCredential = 'DOCKER_HUB_TOKEN'
+      NGINX_REPO_CERT = credentials("NGINX_REPO_EVAL_CERT")
+      NGINX_REPO_KEY = credentials("NGINX_REPO_EVAL_KEY")
    }
   agent any
   stages {
@@ -15,14 +15,13 @@ pipeline {
         }
     } */
     stage('Pushing Image') {
-      steps{
-        echo "pushing to docker hub registry"
-        docker.withRegistry( '', registryCredential ) {
-            dockerImage.push("akhng999/django-gunicorn-vn:latest")
-            dockerImage.push('akhng999/nginx:nginxplus')
-        }
+        steps {
+            echo "pushing to docker hub registry"
+            docker.withRegistry( '', registryCredential ) {
+                dockerImage.push("akhng999/django-gunicorn-vn:latest")
+                dockerImage.push('akhng999/nginx:nginxplus')
+            }
        }
-      }
     } 
   /*  stage('Deploy the Applications') {
         steps{
