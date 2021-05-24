@@ -12,7 +12,7 @@ pipeline {
             sh 'cat ${NGINX_REPO_KEY} > "nginx/nginx-repo.key"'
             sh 'docker-compose build'
         }
-    } */
+    } 
     stage('Dockerhub Approval Request') {
         steps {
             script {
@@ -35,7 +35,7 @@ pipeline {
         }
     } 
     stage('Deploy the Applications') {
-        steps{
+        steps {
             sh 'docker-compose up -d'
         }
     }
