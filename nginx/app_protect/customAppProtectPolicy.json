@@ -232,9 +232,34 @@
        ],
        "signature-sets" : [
          {
+            "name": "OWA Signatures",
+            "block": true,
+            "alarm": true
+         },
+         {
+            "name": "Vulnerability Scanner Signatures",
+            "block": true,
+            "alarm": true
+         },
+         {
+            "name": "SQL Injection Signatures",
+            "block": true,
+            "alarm": true
+         },
+         {
+            "name": "All CVE Signatures",
+            "block": true,
+            "alarm": true
+         },
+         {
              "name": "High Accuracy Signatures",
              "block": true,
              "alarm": true
+          },
+          {
+            "name": "Remote File Include Signatures",
+            "block": true,
+            "alarm": true
           },
           {
              "alarm" : true,
@@ -258,7 +283,7 @@
           },
           {
              "alarm" : true,
-             "block" : false,
+             "block" : true,
              "name" : "Generic Detection Signatures (High/Medium Accuracy)"
           }
        ],
@@ -331,7 +356,7 @@
        "enforcer-settings": {
          "enforcerStateCookies": {
              "httpOnlyAttribute": true,
-             "secureAttribute": "never",
+             "secureAttribute": "always",
              "sameSiteAttribute": "strict"
          }
       }
